@@ -13,26 +13,27 @@ public class DepartementContreller {
         System.out.println("-------------------------[ Départements ]---------------------------");
 
 
-        System.out.println("1: Pour ajouter un département");
-        System.out.println("2: Pour afficher les départements");
-        System.out.println("3: Pour modifier un département");
-        System.out.println("4: Pour supprimer un département");
-        System.out.println("0: Pour retourner au menu principal");
+        System.out.println("1: ajouter un département");
+        System.out.println("2: supprimer les départements");
+        System.out.println("3:  modifier un département");
+        System.out.println("4: afficher un département");
+        System.out.println("0:  retourner  un au menu principal");
 
         //"Veuillez sélectionner une option : ")
-        int option = Main.getIntInput("Veuillez sélectionner une option : ");
+        int option = Main.getIntInput("Veuillez choisir une option : ");
         switch(option) {
             case 1:
                 createDepartement();
                 break;
             case 2:
-                showDepartements();
+                destroyDepartement();
                 break;
             case 3:
                 editDepartement();
                 break;
             case 4:
-                destroyDepartement();
+                showDepartements();
+
                 break;
             default:
                 Main.showPrincipalMenu();

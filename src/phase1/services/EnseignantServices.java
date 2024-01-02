@@ -18,32 +18,33 @@ public class EnseignantServices {
         return  new Enseignant("Nom", "Prénom", "Email", "Grade");
     }
 
-    public static Enseignant updateEns(int id,String email, String prenom, String nom, Departement dept){
+    public static void updateEns(int id, String email, String prenom, String nom, Departement dept){
         for (Enseignant enseignant : DB.enseignants) {
             if (enseignant.getId() == id) {
                 enseignant.setNom(nom);
                 enseignant.setPrenom(prenom);
                 enseignant.setEmail(email);}
 
-            return  new Enseignant("Nom", "Prénom", "Email", "Grade");
+            new Enseignant("Nom", "Prénom", "Email", "Grade");
+            return;
         }
         public static ArrayList<Enseignant> deleteEnsById(int id){
             DB.enseignants.remove(getEnsById(id));
-            return  DB.enseignants;
+            return;
         }
 
         public static Departement getEnsById(int id){
             for (Enseignant enseignant : DB.enseignants) {
-                if (enseignant.getId() == id) return enseignant.getDept();
+                if (enseignant.getId() == id) return;
             }
-            return new Enseignant("Nom", "Prénom", "Email", "Grade").getDept();
+            new Enseignant("Nom", "Prénom", "Email", "Grade");
+            return;
         }
 
-        public static ArrayList<Enseignant> getAllEns(){
-            return  DB.enseignants;
-        }}
 
-    public static Departement getEnsById(int id) {
+        }
+
+    public static Enseignant getEnsById(int id) {
    return 0; }
 
     public static void deleteEnsById(int id) {

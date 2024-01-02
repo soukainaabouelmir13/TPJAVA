@@ -46,26 +46,29 @@ public class Main {
         System.out.println("-------------------------[ Bienvenu ]---------------------------");
 
 
-        System.out.println("1: Pour gérer les départements");
-        System.out.println("2: Pour gérer les filières");
-        System.out.println("3: Pour gérer les enseignants");
-        System.out.println("4: Pour gérer les modules");
-        System.out.println("5: Pour gérer les étudiants");
-        System.out.println("0: Pour sortir");
+        System.out.println("1: choisir un département");
+        System.out.println("2: choisir un etudiant");
+        System.out.println("3: choisir une filiere");
+        System.out.println("4: choisir un module");
+        System.out.println("5: choisir un enseignant");
 
         //"Veuillez sélectionner une option : ")
-        int option = getIntInput("Veuillez sélectionner une option : ");
+        int option = getIntInput("choisir une option  : ");
         switch(option) {
             case 1:
                 DepartementContreller.showMenu();
                 break;
             case 2:
+
                 break;
             case 3:
+
                 break;
             case 4:
+
                 break;
             case 5:
+
                 break;
             default:
                 // code block
@@ -93,9 +96,9 @@ public class Main {
 
         Enseignant enseignant = new Enseignant("Nom", "Prénom", "Email", "Grade");
         enseignant.setNom("Amine");
-        enseignant.setPrenom("Ben Charif");
-        enseignant.setEmail("test@gmail.com");
-        enseignant.setGrade("PES");
+        enseignant.setPrenom("Bejari");
+        enseignant.setEmail("aminjar@gmail.com");
+        enseignant.setGrade("Prof");
         enseignant.setId(DB.getEnsId());
         DB.enseignants.add(enseignant);
         showPrincipalMenu();

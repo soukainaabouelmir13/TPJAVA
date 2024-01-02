@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Mainconnexion {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/tp Java";
+        String url = "jdbc:mysql://localhost:3306/tpjava";
         String user = "root";
         String pwd = "";
 
@@ -26,9 +26,9 @@ public class Mainconnexion {
             createTable(cx);
 
             // Insérer un nouveau département
-            Departement newDepartement = new Departement("MIP", new Enseignant("Nom", "Prénom", "Email", "Grade"));
+            Departement newDepartement = new Departement("mip", new Enseignant("Nom", "Prénom", "Email", "Grade"));
             insertDepartement(newDepartement, cx);
-            Departement newDepartement2 = new Departement("Bcg", new Enseignant("Nom", "Prénom", "Email", "Grade"));
+            Departement newDepartement2 = new Departement("gegm", new Enseignant("Nom", "Prénom", "Email", "Grade"));
             insertDepartement(newDepartement2, cx);
             try {
                 // ...
