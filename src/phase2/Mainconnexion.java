@@ -52,14 +52,14 @@ public class Mainconnexion {
         }
     }
     public static void CreatetableEns(Connection cx) throws SQLException {
-        String sql = "create table IF NOT EXISTS Enseignant\n" +
-                "(\n" +
-                " id int auto_increment\n" +
-                " primary key,\n" +
-                " nom varchar(250), \n" +
-                " prenom varchar(250), \n" +
-                " email varchar(250), \n" +
-                " grade varchar(250)  \n" +
+        String sql = "create table IF NOT EXISTS Enseignant" +
+                "(" +
+                " id int auto_increment" +
+                " primary key," +
+                " nom varchar(250), " +
+                " prenom varchar(250), " +
+                " email varchar(250), " +
+                " grade varchar(250)  " +
                 ");";
 
     try (Statement st = cx.createStatement()) {
