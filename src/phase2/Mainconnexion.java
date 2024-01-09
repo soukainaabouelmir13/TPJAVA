@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Mainconnexion {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/tpjava";
+        String url = "jdbc:mysql://localhost:3306/gestionecole";
         String user = "root";
         String pwd = "";
 
@@ -51,14 +51,32 @@ public class Mainconnexion {
             e.printStackTrace();
         }
     }
+    public static void CreatetableEns(Connection cx) throws SQLException {
+        String sql = "create table IF NOT EXISTS Enseignant\n" +
+                "(\n" +
+                " id int auto_increment\n" +
+                " primary key,\n" +
+                " nom varchar(250), \n" +
+                " prenom varchar(250), \n" +
+                " email varchar(250), \n" +
+                " grade varchar(250)  \n" +
+                ");";
 
+    try (Statement st = cx.createStatement()) {
+        st.execute(sql);
+        System.out.println("Table 'Ensiegnant' créée avec succès !");
+    } catch (SQLException e) {
+        System.out.println("Erreur lors de la création de la table 'Enseignant'");
+        e.printStackTrace();
+    }
+}
     public static void createTable(Connection cx) throws SQLException {
         String query = "CREATE TABLE IF NOT EXISTS departements (" +
                 "id int primary key auto_increment, " +
                 "intitule varchar(255), " +
-                "chef int, " + // Vous pouvez stocker l'ID de l'enseignant ici
-                "FOREIGN KEY (chef) REFERENCES enseignants(id)" + // Assurez-vous que la table 'enseignants' existe avec une colonne 'id'
-                ")";
+                "chef int, " +
+                "FOREIGN KEY (chef) REFERENCES enseignants(id)," +
+        ")";
 
         try (Statement st = cx.createStatement()) {
             st.execute(query);
