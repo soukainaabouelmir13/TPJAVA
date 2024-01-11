@@ -26,7 +26,7 @@ public class Mainconnexion {
             createTable(cx);
 
             // Insérer un nouveau département
-            Departement newDepartement = new Departement("mip", new Enseignant("Nom", "Prénom", "Email", "Grade"));
+            Departement newDepartement = new Departement("mecanique", new Enseignant("Nom", "Prénom", "Email", "Grade"));
             insertDepartement(newDepartement, cx);
             Departement newDepartement2 = new Departement("gegm", new Enseignant("Nom", "Prénom", "Email", "Grade"));
             insertDepartement(newDepartement2, cx);
