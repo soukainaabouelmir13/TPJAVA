@@ -74,7 +74,7 @@ public class Mainconnexion {
         String query = "CREATE TABLE IF NOT EXISTS departements (" +
                 "id int primary key auto_increment, " +
                 "intitule varchar(255), " +
-                "chef int, " +
+                "responsable varchar(255), " +
                 "FOREIGN KEY (chef) REFERENCES enseignants(id)," +
         ")";
 
@@ -87,9 +87,9 @@ public class Mainconnexion {
         }
     }
     public static List<Departement> getAllDepartements(Connection cx) throws SQLException {
-        String query = "SELECT d.id, d.intitule, d.chef as chef_id, e.nom as chef_nom, e.prenom as chef_prenom " +
+        String query = "SELECT d.id, d.intitule, d.responsable as responsable_id, e.nom as responsable_nom, e.prenom as responsable_prenom " +
                 "FROM departements d " +
-                "LEFT JOIN enseignants e ON d.chef = e.id";
+                "LEFT JOIN enseignants e ON d.responsable = e.id";
         List<Departement> departements = new ArrayList<>();
 
         Statement st = cx.createStatement();
@@ -118,7 +118,8 @@ public class Mainconnexion {
         return departements;
     }
     public static void insertDepartement(Departement departement, Connection cx) throws SQLException {
-        String query = "INSERT INTO departements (intitule, chef) VALUES (?, ?)";
+        String query = "INSERT INTO departements (id,intitule, responsable) VALUES (1,gegm, amin bjari)" +
+                "(2,mecanique,mari hajar)";
 
         try (PreparedStatement ps = cx.prepareStatement(query)) {
             ps.setString(1, departement.getIntitule());
@@ -133,13 +134,35 @@ public class Mainconnexion {
             e.printStackTrace();
         }
     }
+    public static void insertEnseignant(Enseignant enseignant, Connection cx) throws SQLException {
+        String sql = "INSERT INTO enseignant (id, nom,prenom,email,grade) VALUES (1, amin, bjari,aminjar@gmail.com)" +
+                "(2,mari, hajar,jarrmaro@gmail.com)";
+
+        try (PreparedStatement ps = cx.prepareStatement(sql)) {
+            ps.setString(1, enseignant.getEmail());
+
+            // Supposons que vous stockiez l'ID de l'enseignant en tant que chef du département
+            ps.setInt(2, enseignant.getId());
+
+            ps.executeUpdate();
+            System.out.println("Enseignant inséré avec succès !");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de l'insertion du Enseignant");
+            e.printStackTrace();
+        }
+    }
     public static void deleteDepartement(int idDep, Connection myConn) throws SQLException {
         String sql = "DELETE  from Departement where idDep = ?";
         PreparedStatement myStmt = myConn.prepareStatement(sql);
         myStmt.setInt(1, idDep);
         myStmt.executeUpdate();
     }
-
+    public static void deleteEnseignant(int idEns, Connection myConn) throws SQLException {
+        String sql = "DELETE  from Enseignant where idEns = ?";
+        PreparedStatement myStmt = myConn.prepareStatement(sql);
+        myStmt.setInt(1, idEns);
+        myStmt.executeUpdate();
+    }
 
 }
 
